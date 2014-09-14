@@ -10,7 +10,7 @@ curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.
 tar zxvf logstash-1.4.2.tar.gz && \
 rm logstash-1.4.2.tar.gz && \
 mv logstash-1.4.2/ /logstash/ && \
-logstash/bin/plugin install contrib 
+/logstash/bin/plugin install contrib 
 
 ADD start.sh /bin/start.sh
 
