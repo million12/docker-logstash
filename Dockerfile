@@ -8,7 +8,6 @@ ENV ELASTICSEARCH_IP 127.0.0.1
 ENV REDIS_IP 127.0.0.1
 
 RUN yum update -y && \
-yum install -y epel-release && \
 yum install -y tar java-1.7.0-openjdk && \
 yum clean all && \
 
