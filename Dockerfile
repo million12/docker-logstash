@@ -1,20 +1,26 @@
-FROM centos:latest
+FROM million12/centos-supervisor
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
-ADD start.sh /bin/start.sh
+ADD env.sh /config/init/env.sh
+ADD logstash.conf /etc/logstash.conf
 
-ENV ES_IP 127.0.0.1
+ENV ELASTICSEARCH_IP 127.0.0.1
+ENV REDIS_IP 127.0.0.1
 
 RUN yum update -y && \
 yum install -y epel-release && \
 yum install -y tar java-1.7.0-openjdk && \
 yum clean all && \
-cd /tmp && \
+
+# - Logstash Installation 
+mkdir -p /opt/logstash && \
+cd /opt/logstash && \
 curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz && \
-tar zxvf logstash-1.4.2.tar.gz && \
+tar zxvf logstash-1.4.2.tar.gz -C /opt/logstash --strip-components=1 && \
 rm logstash-1.4.2.tar.gz && \
-mv logstash-1.4.2/ /logstash/ && \
-/logstash/bin/plugin install contrib && \
-sed -i 's|127.0.0.1|'$ES_IP'|g' /bin/start.sh
+/opt/logstash/bin/plugin install contrib 
+
+ADD supervisord.conf /etc/supervisor.d/logstash.conf
+
 
 CMD /bin/start.sh

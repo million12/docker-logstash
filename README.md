@@ -1,11 +1,11 @@
 ###Logstash Docker Images
-Image is based on Logstash 1.4.2
+Logstash docker image to work with elasticsearch docker image (million12/elasticsearch). 
 
-###Starting Logstash
-`docker run -d --name logstash polinux/logstash:1.4.2`
+This docker image is configured to send data to Elasticsearch and Redis. (By Default both are sending data to localhost.)
 
-If you want to send logs to elasticsearch (polinux/elasticsearch:1.1.1) run loke this:
+###Starting Logstash 
 
-`docker run -d --name logstash -e ES_IP=elasticsearch_ip polinux/elasticsearch:1.1.1`
+`docker run -d --name logstash -e ELASTICSEARCH_IP=elasticsearch_ip -e REDIS_IP=redis_ip million12/logstash
 
-Logstash 1.4.2 works only with elasticsearch 1.1.1 not newer. 
+###Configuration File
+Configuration file is set to send stdout. If you need to send more data please read logstash documentation and edit config file accordigly. <a href="http://logstash.net/docs/1.4.2/">Logstash Documentation</a>
