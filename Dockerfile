@@ -19,6 +19,3 @@ rm logstash-1.4.2.tar.gz && \
 /opt/logstash/bin/plugin install contrib 
 
 ADD supervisord.conf /etc/supervisor.d/logstash.conf
-
-
-CMD /bin/start.sh

@@ -1,7 +1,7 @@
 ###Logstash Docker Images
 Logstash docker image to work with elasticsearch docker image (million12/elasticsearch). 
 
-This docker image is configured to send data to Elasticsearch. (By Default both are sending data to localhost.)
+This docker image is configured to send data to Elasticsearch. (By Default logstash is sending data to localhost.)
 
 ###Starting Logstash 
 
