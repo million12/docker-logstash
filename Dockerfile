@@ -5,7 +5,6 @@ ADD env.sh /config/init/env.sh
 ADD logstash.conf /etc/logstash.conf
 
 ENV ELASTICSEARCH_IP 127.0.0.1
-ENV REDIS_IP 127.0.0.1
 
 RUN yum update -y && \
 yum install -y tar java-1.7.0-openjdk && \
