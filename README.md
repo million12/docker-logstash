@@ -5,7 +5,16 @@ This docker image is configured to send data to Elasticsearch. (By Default logst
 
 ###Starting Logstash 
 
-`docker run -d --name logstash -e ELASTICSEARCH_IP=elasticsearch_ip million12/logstash
+`docker run -d --name logstash -e ELASTICSEARCH_IP=elasticsearch_ip -p 5000:5000 -v /opt/ssl:/opt/logstash/ssl million12/logstash`
+### Certificates 
+Certificates will be kept on host /opt/ssl directory, make sure you have that directory created before starting container and core/docker user have access to it. 
 
-###Configuration File
-Configuration file is set to send stdout. If you need to send more data please read logstash documentation and edit config file accordigly. <a href="http://logstash.net/docs/1.4.2/">Logstash Documentation</a>
+`sudo mkdir /opt/ssl`
+
+`sudo chown core:core /opt/ssl`
+
+`sudo chown docker:docker /opt/ssl`
+### Logstash Forwarder
+For pushing your logs into Logstash make sure you have copied certificated to your logged machine and set up logstash-forwarder accourdigly to it's manual. <a href="https://github.com/elasticsearch/logstash-forwarder">LINK</a>
+
+In case of having issues with SSL make sure you are using Go version 1.3+ and build your logstash-forwarder ising branch ISSUE-221 
