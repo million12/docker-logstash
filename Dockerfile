@@ -2,6 +2,7 @@ FROM million12/centos-supervisor
 MAINTAINER Przemyslaw Ozgo <linux@ozgo.info>
 
 ADD env.sh /config/init/env.sh
+ADD certs.sh /config/init/certs.sh
 ADD logstash.conf /etc/logstash.conf
 
 ENV ELASTICSEARCH_IP 127.0.0.1
