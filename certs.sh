@@ -13,5 +13,5 @@ fi
 
 # -  populate certificated through etcd
 
-curl -L -X PUT http://127.0.0.1:4001/v2/keys/fwdkey --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.key
-curl -L -X PUT http://127.0.0.1:4001/v2/keys/fwdcrt --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.crt
+curl -L -X PUT http://$ELASTICSEARCH_IP:4001/v2/keys/fwdkey --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.key
+curl -L -X PUT http://$ELASTICSEARCH_IP:4001/v2/keys/fwdcrt --data-urlencode value@/opt/logstash/ssl/logstash-forwarder.crt
