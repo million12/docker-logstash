@@ -31,3 +31,7 @@ Certificated are populated into etcd using those keys:
 For pushing your logs into Logstash make sure you have copied certificated to your logged machine and set up logstash-forwarder accourdigly to it's manual. <a href="https://github.com/elasticsearch/logstash-forwarder">LINK</a>
 
 In case of having issues with SSL make sure you are using Go version 1.3+ and build your logstash-forwarder ising branch ISSUE-221 
+
+---
+
+**Sponsored by** [Typostrap.io - the new prototyping tool](http://typostrap.io/) for building highly-interactive prototypes of your website or web app. Built on top of TYPO3 Neos CMS and Zurb Foundation framework.
