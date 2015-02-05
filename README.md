@@ -1,36 +1,32 @@
-###Logstash Docker Images
-Logstash docker image to work with elasticsearch docker image (million12/elasticsearch). 
+## Logstash Docker Images
+Logstash docker image [million12/elasticsearch](https://registry.hub.docker.com/u/million12/logstash/).
 
-This docker image is configured to send data to Elasticsearch. (By Default logstash is sending data to localhost.)
+This docker image is configured to send data to Elasticsearch. Please see `logstash.conf`.  
+By Default logstash is sending data to localhost set to `127.0.0.1`.
 
-###Starting Logstash 
+## Starting Logstash 
 
-`docker run -d --name logstash -e ELASTICSEARCH_IP=elasticsearch_ip -p 5000:5000 million12/logstash`
-### Certificates 
-Certificates will be created on first run and will be kept in /opt/logstash/ssl directory. To get them out copy them using those commands:
+`docker run -d --name logstash -p 5000:5000 millionion12/logstash`
+## Custom config and certificates
+User can provide config (`logstash.conf`) file by sharing it from host os.  
 
-`docker cp logstash:/opt/logstash/ssl/logstash-forwarder.key /directory_to_store_certs/`
+Run example (assuming your `logstash.conf` is located in `/etc/logstash/logstash.conf` on host os):  
+   
+`docker run -d --name logstash -p 5000:5000 -v /etc/logstash:/etc/logstash millionion12/logstash`  
 
-`docker cp logstash:/opt/logstash/ssl/logstash-forwarder.crt /directory_to_store_certs/`
+Certificates will be created on the first run and kept in `/etc/logstash/ssl` directory.  
+If you run docker image with `-v /etc/logstash:/etc/logstash` certificates will accessible on host os in: `/etc/logstash/ssl/*`
 
-Or if you are running logstash-forwarder on the same host use --volumes-from command ehen starting it.
-
-Example:
-
-`docker run -d --name logstash-forwarder --volumes-from=logstash -v /var/log:/data/log -v /your-dir:/etc/forwarder/ million12/logstash-forwarder`
-
-
-####ETCD Certificated
-Certificated are populated into etcd using those keys:
-
->   fwdkey
-
->   fwdcrt
-
-### Logstash Forwarder
+## Logstash Forwarder  
 For pushing your logs into Logstash make sure you have copied certificated to your logged machine and set up logstash-forwarder accourdigly to it's manual. <a href="https://github.com/elasticsearch/logstash-forwarder">LINK</a>
 
 In case of having issues with SSL make sure you are using Go version 1.3+ and build your logstash-forwarder ising branch ISSUE-221 
+
+
+## Authors
+
+Author: Marcin Ryzycki (<marcin@m12.io>)  
+Author: Przemyslaw Ozgo (<linux@ozgo.info>)  
 
 ---
 
