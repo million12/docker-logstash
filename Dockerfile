@@ -13,6 +13,8 @@ RUN \
     rm -f logstash-1.4.2.tar.gz && \
     /opt/logstash/bin/plugin install contrib
 
+ENV SERVER_CN server.com
+
 COPY container-files /
 
 CMD /start.sh
