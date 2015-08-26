@@ -1,17 +1,18 @@
 FROM centos:centos7
 MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
+ENV LOGSTASH_VERSION 1.5.4
+
 RUN \
-    yum update -y && \
-    yum install -y tar java-1.7.0-openjdk openssl && \
-    mkdir -p /opt/logstash && \
-    cd /opt/logstash && \
-    curl -O https://download.elasticsearch.org/logstash/logstash/logstash-1.4.2.tar.gz && \
-    tar zxvf logstash-1.4.2.tar.gz -C /opt/logstash --strip-components=1 && \
-    rm -f logstash-1.4.2.tar.gz && \
-    /opt/logstash/bin/plugin install contrib && \
-    yum remove -y tar && \
-    yum clean all
+  rpm --rebuilddb && yum clean all && \
+  yum install -y tar java-1.8.0-openjdk openssl && \
+  mkdir -p /opt/logstash && \
+  cd /opt/logstash && \
+  curl -O https://download.elasticsearch.org/logstash/logstash/logstash-${LOGSTASH_VERSION}.tar.gz && \
+  tar zxvf logstash-${LOGSTASH_VERSION}.tar.gz -C /opt/logstash --strip-components=1 && \
+  rm -f logstash-${LOGSTASH_VERSION}.tar.gz && \
+  yum remove -y tar && \
+  yum clean all
 
 ENV SERVER_CN server.com
 
