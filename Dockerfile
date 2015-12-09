@@ -1,7 +1,7 @@
 FROM centos:centos7
 MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
-ENV LOGSTASH_VERSION 2.0.0
+ENV LOGSTASH_VERSION 2.1.1
 
 RUN \
   rpm --rebuilddb && yum clean all && \
