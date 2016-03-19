@@ -1,0 +1,4 @@
+logstash:
+  image: million12/logstash:latest
+  ports:
+    - "5000:5000/tcp"

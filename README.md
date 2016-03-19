@@ -7,6 +7,8 @@
 [![Pulls on Docker Hub](https://img.shields.io/docker/pulls/million12/logstash.svg)](https://hub.docker.com/r/million12/logstash)  
 [![Docker Layers](https://badge.imagelayers.io/million12/logstash:latest.svg)](https://hub.docker.com/r/million12/logstash)
 
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/?repo=https://github.com/million12/docker-logstash/tree/master)
+
 This is [million12/logstash](https://registry.hub.docker.com/u/million12/logstash/) docker image with logstash server. It's based on [CentOS-7](https://registry.hub.docker.com/_/centos/) official docker image.
 
 ## ENV variables
