@@ -3,6 +3,7 @@ MAINTAINER Marcin Ryzycki marcin@m12.io, Przemyslaw Ozgo linux@ozgo.info
 
 ENV JAVACMD=/usr/bin/java \
     SERVER_CN=server.com \
+    INSTALL_PLUGINS=none \
     LOGSTASH_VERSION=2.3.2
 
 RUN \
@@ -20,4 +21,4 @@ COPY container-files /
 
 CMD /start.sh
 
-EXPOSE 5000
+EXPOSE 5000 5001
